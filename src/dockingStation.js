@@ -13,6 +13,9 @@ DockingStation.prototype.release = function(bike) {
 };
 
 DockingStation.prototype.dock = function(bike) {
+  if (this.isFull()) {
+    throw new Error('Docking station full');
+  }
   if (bike.working == false) {
     this.brokenBikes.push(bike)
   } else {
@@ -23,6 +26,14 @@ DockingStation.prototype.dock = function(bike) {
 
 DockingStation.prototype.isEmpty = function() {
   if (this.workingBikes.length <= 0) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+DockingStation.prototype.isFull = function() {
+  if (this.workingBikes.length + this.brokenBikes.length >= this.capacity) {
     return true;
   } else {
     return false;

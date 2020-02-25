@@ -27,6 +27,12 @@ describe('dockingStation', function() {
   });
 
   describe('dock', function() {
+    it('raises an error when there are too many bikes docked', function() {
+      station.capacity = 1
+      station.dock(bike)
+      expect(function() {station.dock(bike)}).toThrowError('Docking station full')
+    });
+
     it('docks a bike', function() {
       station.dock(bike)
       expect(station.workingBikes).toEqual([bike])
