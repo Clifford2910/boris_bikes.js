@@ -7,11 +7,18 @@ describe('dockingStation', function() {
 
   describe('releaseBike', function() {
     it('releases a bike', function() {
-      expect(station.releaseBike(bike)).toEqual(bike)
+      station.dock(bike)
+      expect(station.release(bike)).toEqual(bike)
     });
 
     it('releases working bikes', function() {
       expect(bike.working).toEqual(true)
+    });
+
+    it('cannot release broken bikes', function() {
+      bike.reportBroken()
+      station.dock(bike)
+      expect(function() {station.release(bike)}).toThrowError('Docking station empty');
     });
   });
 

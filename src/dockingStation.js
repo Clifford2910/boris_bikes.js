@@ -3,7 +3,10 @@ function DockingStation() {
   this.brokenBikes = [];
 };
 
-DockingStation.prototype.releaseBike = function(bike) {
+DockingStation.prototype.release = function(bike) {
+  if (this.isEmpty()) {
+    throw new Error('Docking station empty');
+  }
   this.workingBikes.pop()
   return bike
 };
@@ -15,4 +18,12 @@ DockingStation.prototype.dock = function(bike) {
     this.workingBikes.push(bike)
   }
   return bike
+};
+
+DockingStation.prototype.isEmpty = function() {
+  if (this.workingBikes.length <= 0) {
+    return true;
+  } else {
+    return false;
+  }
 };
