@@ -1,10 +1,10 @@
 function DockingStation(defaultCapacity = 20) {
-  this.capacity = defaultCapacity
+  this.capacity = defaultCapacity;
   this.workingBikes = [];
   this.brokenBikes = [];
 };
 
-DockingStation.prototype.release = function(bike) {
+DockingStation.prototype.releaseBike = function() {
   if (this.isEmpty()) {
     throw new Error('Docking station empty');
   }

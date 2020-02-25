@@ -9,3 +9,11 @@ Bike.prototype.reportBroken = function() {
 Bike.prototype.fix = function() {
   bike.working = true;
 };
+
+Array.prototype.remove = function(value) {
+    if (this.indexOf(value) != -1) {
+        this.splice(this.indexOf(value), 1);
+        return true;
+    }
+    return false;
+}
