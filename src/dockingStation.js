@@ -1,4 +1,5 @@
-function DockingStation() {
+function DockingStation(defaultCapacity = 20) {
+  this.capacity = defaultCapacity
   this.workingBikes = [];
   this.brokenBikes = [];
 };
