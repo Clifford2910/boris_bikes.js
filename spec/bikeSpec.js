@@ -6,7 +6,7 @@ describe('bike', function() {
 
   describe('reportBroken', function() {
     it('reports a broken bike', function() {
-      bike.reportBroken
+      bike.reportBroken()
       expect(bike.working).toEqual(false);
     });
   });
