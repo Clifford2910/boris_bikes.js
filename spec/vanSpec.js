@@ -1,6 +1,7 @@
 describe('van', function() {
 
   beforeEach(function() {
+    garage = new Garage(30)
     van = new Van(10)
     bike = new Bike()
     bike2 = new Bike()
@@ -49,14 +50,16 @@ describe('van', function() {
       expect(function() {van.distribute(emptyStation, bike)}).toThrowError('Van does not contain working bikes')
     })
 
-    // it('distributes working bikes to a station', function() {
-    //   bike.reportBroken()
-    //   emptyStation.dock(bike)
-    //   van.collect(emptyStation, bike)
-    //   bike.fix()
-    //   van.distribute(emptyStation, bike)
-    //   expect(emptyStation.workingBikes).toEqual([bike])
-    // })
+    it('distributes working bikes to a station', function() {
+      bike.reportBroken()
+      emptyStation.dock(bike)
+      van.collect(emptyStation, bike)
+      garage.take(van, bike)
+      garage.fix(bike)
+      garage.give(van, bike)
+      van.distribute(emptyStation, bike)
+      expect(emptyStation.workingBikes).toEqual([bike])
+    })
   });
 
   describe('capacity', function() {

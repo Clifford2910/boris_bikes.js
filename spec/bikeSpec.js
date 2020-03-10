@@ -11,4 +11,12 @@ describe('bike', function() {
     });
   });
 
+  describe('fix', function() {
+    it('fixes a bike', function() {
+      bike.reportBroken()
+      bike.fix()
+      expect(bike.working).toEqual(true)
+    })
+  })
+
 });

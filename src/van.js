@@ -25,6 +25,7 @@ Van.prototype.distribute = function (station, bike) {
   }
   station.workingBikes.push(bike)
   this.loadedWorkingBikes.remove(bike)
+  return bike
 };
 
 Van.prototype.isEmpty = function() {
